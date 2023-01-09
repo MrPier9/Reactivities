@@ -10,7 +10,7 @@ export default function Homepage() {
                     Reactivities
                 </Header>
                 <Header as='h2' inverted content='Welcome to Reactivities' />
-                <Button as={Link} to='/activities' size="huge" inverted >Take to the activities</Button>
+                <Button as={Link} to='/activities' size="huge" inverted >Take me to the activities</Button>
             </Container>
         </Segment>
     )
