@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
-import { Activity } from "../modules/activities";
+import { Activity } from "../models/activities";
 import { v4 as uuid } from "uuid";
 
 export default class ActivityStore {
