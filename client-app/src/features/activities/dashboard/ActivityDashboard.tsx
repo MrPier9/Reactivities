@@ -10,7 +10,10 @@ export default observer(function ActivityDashboard() {
     const { activityStore } = useStore();
 
     useEffect(() => {
-        if (activityStore.activityRegistry.size < 2) activityStore.loadActivities();
+        if (activityStore.activityRegistry.size < 2 || activityStore.isDirty) {
+            activityStore.loadActivities();
+            activityStore.isDirty = false;
+        }
     }, [activityStore])
 
     if (activityStore.loadingInitial) return <LoadingComponent />

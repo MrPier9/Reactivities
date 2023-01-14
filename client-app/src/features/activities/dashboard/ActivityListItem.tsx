@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 import { Button, Icon, Item, ItemContent, ItemDescription, ItemGroup, ItemHeader, ItemImage, Label, Segment, SegmentGroup } from "semantic-ui-react";
 import { Activity } from "../../../app/models/activity";
@@ -8,7 +9,7 @@ interface Props {
     activity: Activity
 }
 
-export default function ActivityListItem({ activity }: Props) {
+export default observer(function ActivityListItem({ activity }: Props) {
     return (
         <SegmentGroup raised>
             <Segment>
@@ -62,4 +63,4 @@ export default function ActivityListItem({ activity }: Props) {
             </Segment>
         </SegmentGroup>
     )
-}
+})

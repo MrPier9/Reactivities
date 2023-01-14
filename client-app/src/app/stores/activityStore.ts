@@ -11,6 +11,7 @@ export default class ActivityStore {
     editMode = false;
     loading = false;
     loadingInitial = false;
+    isDirty = false;
 
     constructor() {
         makeAutoObservable(this)
