@@ -8,12 +8,16 @@ interface Props {
 }
 
 export default observer(function ProfileCard({ profile }: Props) {
+
     return (
         <Card as={Link} to={`/profiles/${profile.username}`} style={{ maxWidth: '240px', maxHeight: '350px' }}>
             <Image src={profile.image || "/assets/user.png"} />
             <CardContent>
                 <CardHeader>{profile.displayName}</CardHeader>
-                <CardDescription>Bio goes here</CardDescription>
+                {profile.bio &&
+                    <CardDescription>{profile.bio.length > 30 ? profile.bio.substring(0, 32) + '...' : profile.bio}
+                    </CardDescription>
+                }
             </CardContent>
             <CardContent extra>
                 <Icon name="user" />

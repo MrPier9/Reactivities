@@ -9,6 +9,7 @@ export default class ProfileStore {
     uploading = false;
     loading = false;
     deleting = false;
+    isDirty = false;
 
     constructor() {
         makeAutoObservable(this);
@@ -90,6 +91,25 @@ export default class ProfileStore {
             console.log(error);
         } finally {
             runInAction(() => this.deleting = false);
+        }
+    }
+
+    editName = async (displayName: string, bio?: string) => {
+        this.loading = true;
+        try {
+            await agent.Profiles.editName(displayName, bio);
+            runInAction(() => {
+                if (this.profile && this.profile.displayName) {
+                    this.profile.displayName = displayName;
+                    store.userStore.user!.displayName = displayName;
+                    this.profile.bio = bio;
+                    this.isDirty = true;
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        } finally {
+            runInAction(() => this.loading = false);
         }
     }
 }

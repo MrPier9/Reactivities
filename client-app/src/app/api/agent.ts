@@ -95,7 +95,9 @@ const Profiles = {
         });
     },
     setMainPhoto: (id: string) => requests.post<void>(`/photos/${id}/setmain`, {}),
-    deletePhoto: (id: string) => requests.del<void>(`/photos/${id}`)
+    deletePhoto: (id: string) => requests.del<void>(`/photos/${id}`),
+    editName: (displayName: string, bio?: string) => requests.put<void>('/profiles', { displayName, bio })
+
 }
 
 const agent = {

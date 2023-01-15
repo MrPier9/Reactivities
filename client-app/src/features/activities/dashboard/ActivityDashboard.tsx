@@ -7,14 +7,15 @@ import ActivityFitlers from "./ActivityFilters";
 import ActivityList from "./ActivityList";
 
 export default observer(function ActivityDashboard() {
-    const { activityStore } = useStore();
+    const { activityStore, profileStore } = useStore();
 
     useEffect(() => {
-        if (activityStore.activityRegistry.size < 2 || activityStore.isDirty) {
+        if (activityStore.activityRegistry.size < 2 || activityStore.isDirty || profileStore.isDirty) {
             activityStore.loadActivities();
             activityStore.isDirty = false;
+            profileStore.isDirty = false;
         }
-    }, [activityStore])
+    }, [activityStore, profileStore])
 
     if (activityStore.loadingInitial) return <LoadingComponent />
 

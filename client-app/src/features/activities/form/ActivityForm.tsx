@@ -9,7 +9,6 @@ import { v4 as uuid } from "uuid";
 import { Formik, Form } from "formik";
 import * as Yup from 'yup';
 import MyTextInput from "../../../app/common/form/MyTextInput";
-
 import { categoryOptions } from "../../../app/common/options/categoryOptions";
 import MyDateInput from "../../../app/common/form/MyDateInput";
 import MyTextArea from "../../../app/common/form/MyTextArea";
